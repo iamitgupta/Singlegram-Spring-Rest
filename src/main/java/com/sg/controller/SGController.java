@@ -18,6 +18,7 @@ import com.sg.beans.Likes;
 import com.sg.beans.Post;
 import com.sg.beans.User;
 import com.sg.beans.helper.Login;
+import com.sg.beans.helper.SendMail;
 import com.sg.beans.helper.UpdatePassword;
 import com.sg.services.SGServices;
 
@@ -210,6 +211,12 @@ public class SGController {
 	@GetMapping("/getFollowing/{userId}")
 	public List<User> getFollowing(@PathVariable("userId") final Long userId) {
 		return services.getFollowing(userId);
+	}
+	
+	//send mail
+	@PostMapping("/sendMail")
+	public Boolean sendMail(@RequestBody SendMail mail) {
+		return services.sendMail(mail);
 	}
 
 }

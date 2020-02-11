@@ -1,13 +1,13 @@
 package com.sg.services;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.sg.beans.Comments;
@@ -15,6 +15,7 @@ import com.sg.beans.Follow;
 import com.sg.beans.Likes;
 import com.sg.beans.Post;
 import com.sg.beans.User;
+import com.sg.beans.helper.SendMail;
 import com.sg.beans.helper.UpdatePassword;
 import com.sg.dao.CommentRepository;
 import com.sg.dao.FollowRepository;
@@ -31,6 +32,9 @@ import com.sg.dao.UserRepository;
 
 @Service
 public class SGServicesImpl implements SGServices {
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
 
 	// get repository
 	@Autowired
@@ -333,5 +337,22 @@ public class SGServicesImpl implements SGServices {
 	// // TODO Auto-generated method stub
 	// return null;
 	// }
+	@Override
+	public Boolean sendMail(SendMail mail) {
+		 SimpleMailMessage msg = new SimpleMailMessage();
+//	        msg.setTo(mail.getReciever());
+//
+//	        msg.setSubject(mail.getSubject());
+//	        msg.setText(mail.getBody());
+//	        javaMailSender.send(msg);
+		 
+	        msg.setTo("amitgpt840@gmail.com", "yogeshbbangar2@gmail.com");
+
+	        msg.setSubject("Testing from Spring Boot");
+	        msg.setText("Hello World \n Spring Boot Email");
+
+	        javaMailSender.send(msg);
+	        return true;
+	}
 
 }

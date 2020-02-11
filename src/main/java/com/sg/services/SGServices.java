@@ -7,6 +7,7 @@ import com.sg.beans.Comments;
 import com.sg.beans.Likes;
 import com.sg.beans.Post;
 import com.sg.beans.User;
+import com.sg.beans.helper.SendMail;
 import com.sg.beans.helper.UpdatePassword;
 
 /**
@@ -73,7 +74,8 @@ public interface SGServices {
 //	public List<Post> latestFirst(List<Post> postList);
 	
 	
-	
+	//mail
+	public Boolean sendMail(SendMail mail) ;
 	
 	
 	
